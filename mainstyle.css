@@ -1,11 +1,12 @@
 *{
     margin:0;
     padding:0;
+    color: red;
 }
 #container {
     border:1px solid blue;
     width: 100%;
-    background:gray;
+    background:yellow;
     float:left;
     top: 60px;
     text-indent:0px;
