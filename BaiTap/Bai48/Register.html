@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <title>Register</title>
+    </head>
+    <body style="background-color: lightskyblue; text-align: center;">
+        <img src="hinh/Jackson.gif">
+        <form style="width: 600px; margin: auto;">
+            <h1>Registration Form</h1>
+            <p>Register your Jackson Electronics product here</p>
+            <table>
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" name="firstname"></td>
+                    <td>Last Name:</td>
+                    <td><input type="text" name="lastname"></td>
+                </tr>
+                <tr>
+                    <td>Address #1:</td>
+                    <td colspan="3"><input type="text" name="address1" size="30"></td>
+                </tr>
+                <tr>
+                    <td>Address #2:</td>
+                    <td colspan="3"><input type="text" name="address2" size="30"></td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td><input type="text" name="city"></td>
+                    <td>State:</td>
+                    <td><input type="text" name="state" size="3">Zip:
+                        <input type="text" name="zip" size="7">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Country:</td>
+                    <td><input type="text" name="country" value="United States"></td>
+                </tr>
+            </table>
+            <hr>
+            <table>
+                <tr>
+                    <td>Product:</td>
+                    <td>
+                        <select name="product">
+                            <option>ScanMaster</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Date Purchased:</td>
+                    <td><input type="text" name="date"></td>
+                </tr>
+                <tr>
+                    <td>Serial #:</td>
+                    <td><input type="text" name="serial"></td>
+                </tr>
+                <tr>
+                    <td>Used for:</td>
+                    <td>
+                        <input type="radio" name="usedfor" value="home" id="home">
+                        <label for="home">Home</label>
+                        <input type="radio" name="usedfor" value="education" id="education">
+                        <label for="education">Educational Institution</label><br>
+                        <input type="radio" name="usedfor" value="business" checked id="business">
+                        <label for="business">Business</label>
+                        <input type="radio" name="usedfor" value="other" id="other">
+                        <label for="other">Other</label><br>
+                        <input type="radio" name="usedfor" value="government" id="government">
+                        <label for="government">Government</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>System (check all that apply):</td>
+                    <td>
+                        <input type="checkbox" name="system" value="windows" id="windows">
+                        <label for="windows">Windows</label>
+                        <input type="checkbox" name="system" value="unix" id="unix">
+                        <label for="unix">UNIX</label><br>
+                        <input type="checkbox" name="system" value="macintosh" id="macintosh">
+                        <label for="macintosh">Macintosh</label>
+                        <input type="checkbox" name="system" value="other2" id="other2">
+                        <label for="other2">Other</label>
+                    </td>
+                </tr>
+            </table>
+            <hr>
+            <table>
+                <tr>
+                    <td>Comments?:</td>
+                    <td><textarea name="comments" rows="8" cols="50"></textarea></td>
+                </tr>
+            </table>
+            <input type="submit" value="Click to register">
+            <input type="reset" value="Click to cancel">
+        </form>
+    </body>
+</html>

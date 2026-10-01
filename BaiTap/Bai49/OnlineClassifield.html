@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>Online Classifieds</title>
+    </head>
+    <body style="background-color: paleturquoise;">
+        <form style="width: 600px; margin: auto;">
+            <h1 style="color: red;">Online Classifieds Search Form</h1>
+            <hr>
+            <h3>1) Search for a classified in the following sections:</h3>
+            <table>
+                <tr>
+                    <td>
+                        <input type="radio" name="section" value="employment" id="emp">
+                        <label for="emp">Employment</label>
+                    </td>
+                    <td>
+                        <input type="radio" name="section" value="personal" id="personal">
+                        <label for="personal">Personal</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="section" value="sale" id="sale" checked>
+                        <label for="sale">For Sale</label>
+                    </td>
+                    <td>
+                        <input type="radio" name="section" value="miscellaneous" id="misc">
+                        <label for="misc">Miscellaneous</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="section" value="housing" id="housing">
+                        <label for="housing">Housing</label>
+                    </td>
+                    <td>
+                        <input type="radio" name="section" value="all" id="all">
+                        <label for="all">All of the above</label>
+                    </td>
+                </tr>
+            </table>
+            <h3>2) Search the following publications:</h3>
+            <table>
+                <tr>
+                    <td><input type="checkbox" name="publication" value="midwest" checked id="midwest">
+                        <label for="midwest">Midwest times</label></td>
+                    <td><input type="checkbox" name="publication" value="modern" id="modern">
+                        <label for="modern">Modern News</label></td>
+                    <td><input type="checkbox" name="publication" value="employment" id="employment">
+                        <label for="employment">Employment Today</label></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="publication" value="greatlakes" checked id="greatlakes">
+                        <label for="greatlakes">Great Lakes Classifieds</label></td>
+                    <td><input type="checkbox" name="publication" value="middleton" id="middleton">
+                        <label for="middleton">Middleton Daily</label></td>
+                    <td><input type="checkbox" name="publication" value="cashtown" id="cashtown">
+                        <label for="cashtown">Cashtown Daily News</label></td>
+                </tr>
+            </table>
+            <h3>
+                3) From to
+                <input type="date" name="from" placeholder="mm/dd/yyyy">
+                to
+                <input type="date" name="to" placeholder="mm/dd/yyyy">
+            </h3>
+            <h3>4) Enter a few keywords to describe the classified.</h3>
+            <input type="text" name="keyword" size="100">
+            <h3>5) Click one of the options below:</h3>
+            <a href="javascript:alert('Search... (Nothing here)')"><img src="Search.gif"></a>
+            <a href="https://www.oxfordlearnersdictionaries.com/definition/english/help_1" target="_blank"><img src="Help.gif"></a>
+            <input type="image" src="Cancel.gif" alt="Cancel" onclick="this.form.reset();">
+        </form>
+    </body>
+</html>
