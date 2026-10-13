@@ -1,0 +1,248 @@
+<html>
+    <head>
+        <title>Bài 63</title>
+        <style>
+            .sothich, .mausac {
+                margin-left: 30px;
+            }
+            .mausac label {
+                display: block;
+            }
+            form {
+                margin-bottom: 0;
+            }
+            button {
+                margin: 10px 0;
+                cursor: pointer;
+            }
+            table {
+                border-collapse: collapse;
+            }
+            th, td {
+                border: 2px solid gray;
+                text-align: left;
+            }
+            th {
+                background-color: blue;
+                color: white;
+            }
+        </style>
+    </head>
+    <body style="margin: 0 450px;">
+        <h1>Đăng ký thành viên</h1>
+        <hr>
+        <form id="formDangKy" onsubmit="return false;">
+            <label for="ten">Tên(*)</label>
+            &nbsp;
+            <input type="text" id="ten" size="20">
+            <br>
+            Ngày sinh(*)
+            &nbsp;
+            Ngày: <select id="ngay"></select>
+            Tháng: <select id="thang"></select>
+            Năm: <select id="nam"></select>
+            <br>
+            Giới tính(*)
+            &nbsp;
+            <input type="radio" name="gioitinh" id="namGT" value="Nam" checked>
+            <label for="namGT">Nam</label>
+            <input type="radio" name="gioitinh" id="nuGT" value="Nữ">
+            <label for="nuGT">Nữ</label>
+            <br>
+            <label for="email">Email(*)</label>
+            &nbsp;
+            <input type="email" id="email" size="22">
+            <br>
+            Sở thích của bạn:
+            <div class="sothich">
+                <input type="checkbox" name="sothich" value="Mua sắm" checked>
+                Mua sắm<br>
+                <input type="checkbox" name="sothich" value="Du lịch" checked>
+                Du lịch<br>
+                <input type="checkbox" name="sothich" value="Tán gẫu" checked>
+                Tán gẫu<br>
+                <input type="checkbox" name="sothich" value="Đọc sách" checked>
+                Đọc sách<br>
+                <input type="checkbox" name="sothich" value="Nghe nhạc" checked>
+                Nghe nhạc
+            </div>
+            Màu yêu thích của bạn:
+            <div class="mausac">
+                <label>
+                    <input type="radio" name="mausac" value="Màu xanh da trời" checked>
+                    <span style="background-color: blue;">Màu xanh da trời</span>
+                </label>
+                <label>
+                    <input type="radio" name="mausac" value="Màu đỏ">
+                    <span style="background-color: red;">Màu đỏ</span>
+                </label>
+                <label>
+                    <input type="radio" name="mausac" value="Màu vàng">
+                    <span style="background-color: yellow;">Màu vàng</span>
+                </label>
+                <label>
+                    <input type="radio" name="mausac" value="Màu xanh xanh lá cây">
+                    <span style="background-color: green;">Màu xanh xanh lá cây</span>
+                </label>
+                <label>
+                    <input type="radio" name="mausac" value="Màu xanh tím">
+                    <span style="background-color: violet;">Màu xanh tím</span>
+                </label>
+            </div>
+            <button type="button" onclick="dangKy()">Đăng ký</button>
+            <button type="button" onclick="tiepTuc()">Tiếp</button>
+        </form>
+        <table id="bangThanhVien">
+            <thead>
+                <tr>
+                    <th>Tên</th>
+                    <th>Email</th>
+                    <th>Giới tính</th>
+                    <th>Năm sinh</th>
+                    <th>Sở thích</th>
+                    <th>Màu yêu thích</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nguyễn Văn Bình</td>
+                    <td>binh@gmail.com</td>
+                    <td>Nam</td>
+                    <td>02/02/1990</td>
+                    <td>đọc sách</td>
+                    <td>Màu vàng</td>
+                </tr>
+                <tr>
+                    <td>Nguyễn Thị An</td>
+                    <td>nguyenthian@gmail.com</td>
+                    <td>Nữ</td>
+                    <td>01/01/1992</td>
+                    <td>Tán gẫu, đọc sách</td>
+                    <td>Màu đỏ</td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            function napNgay() {
+                var ngay = document.getElementById("ngay");
+                for (var i = 1; i <= 31; i++) {
+                    var option = document.createElement("option");
+                    option.value = i;
+                    option.text = (i < 10 ? "0" : "") + i;
+                    ngay.appendChild(option);
+                }
+            }
+            function napThang() {
+                var thang = document.getElementById("thang");
+
+                for (var i = 1; i <= 12; i++) {
+                    var option = document.createElement("option");
+                    option.value = i;
+                    option.text = i;
+                    thang.appendChild(option);
+                }
+            }
+            function napNam() {
+                var nam = document.getElementById("nam");
+                for (var i = 1970; i <= 2026; i++) {
+                    var option = document.createElement("option");
+                    option.value = i;
+                    option.text = i;
+                    nam.appendChild(option);
+                }
+                nam.value = 1970;
+            }
+            function dangKy() {
+                var ten = document.getElementById("ten").value.trim();
+                var email = document.getElementById("email").value.trim();
+
+                if (ten === "") {
+                    alert("Vui lòng nhập tên!");
+                    document.getElementById("ten").focus();
+                    return;
+                }
+                var mauEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!mauEmail.test(email)) {
+                    alert("Email không hợp lệ!");
+                    document.getElementById("email").focus();
+                    return;
+                }
+                var ngay = document.getElementById("ngay").value;
+                var thang = document.getElementById("thang").value;
+                var nam = document.getElementById("nam").value;
+                var ngaySinh = new Date(nam, thang - 1, ngay);
+                if (
+                    ngaySinh.getFullYear() != nam ||
+                    ngaySinh.getMonth() != thang - 1 ||
+                    ngaySinh.getDate() != ngay
+                ) {
+                    alert("Ngày sinh không hợp lệ!");
+                    return;
+                }
+                var gioitinh = document.querySelector(
+                    'input[name="gioitinh"]:checked'
+                ).value;
+                var dsSoThich = document.querySelectorAll(
+                    'input[name="sothich"]:checked'
+                );
+                var soThich = [];
+                for (var i = 0; i < dsSoThich.length; i++) {
+                    soThich.push(dsSoThich[i].value);
+                }
+                var mauSac = document.querySelector(
+                    'input[name="mausac"]:checked'
+                ).value;
+                var tbody = document.querySelector("#bangThanhVien tbody");
+                var dong = document.createElement("tr");
+                var duLieu = [
+                    ten,
+                    email,
+                    gioitinh,
+                    ngay + "/" + thang + "/" + nam,
+                    soThich.join(", "),
+                    mauSac
+                ];
+                for (var j = 0; j < duLieu.length; j++) {
+                    var o = document.createElement("td");
+
+                    o.textContent = duLieu[j];
+                    dong.appendChild(o);
+                }
+                dong.onmouseover = function () {
+                    this.style.backgroundColor = "yellow";
+                };
+                dong.onmouseout = function () {
+                    this.style.backgroundColor = "white";
+                };
+                tbody.appendChild(dong);
+                alert("Đăng ký thành công!");
+            }
+            function tiepTuc() {
+                document.getElementById("formDangKy").reset();
+                document.getElementById("ngay").value = "1";
+                document.getElementById("thang").value = "1";
+                document.getElementById("nam").value = "1970";
+                document.getElementById("ten").focus();
+            }
+            function ganSuKienChoDong() {
+                var cacDong = document.querySelectorAll(
+                    "#bangThanhVien tbody tr"
+                );
+
+                for (var i = 0; i < cacDong.length; i++) {
+                    cacDong[i].onmouseover = function () {
+                        this.style.backgroundColor = "yellow";
+                    };
+
+                    cacDong[i].onmouseout = function () {
+                        this.style.backgroundColor = "white";
+                    };
+                }
+            }
+            napNgay();
+            napThang();
+            napNam();
+            ganSuKienChoDong();
+        </script>
+    </body>
+</html>

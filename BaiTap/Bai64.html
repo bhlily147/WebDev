@@ -1,0 +1,169 @@
+<html>
+    <head>
+        <title>Bài 64</title>
+    </head>
+    <body style="margin: 0 auto; width: 670px;">
+        <p id="dongHo" style="font-size: 17px;"></p>
+        <p id="thongBao"
+        onclick="chuotTrai()"
+        oncontextmenu="chuotPhai(event)">
+            Click chuột vào dòng này. Sẽ xuất hiện thông báo phím bấm của chuột
+        </p>
+        <table id="bang" border="1" width="544" cellspacing="0">
+            <tbody>
+                <tr onclick="chonDong(this)">
+                    <td onclick="chonCot(event, this)">Thêm dòng mới ở đây</td>
+                    <td onclick="chonCot(event, this)">Thêm dòng mới ở đây</td>
+                </tr>
+                <tr onclick="chonDong(this)">
+                    <td onclick="chonCot(event, this)">Thêm dòng mới ở đây</td>
+                    <td onclick="chonCot(event, this)">Thêm dòng mới ở đây</td>
+                </tr>
+                <tr onclick="chonDong(this)">
+                    <td onclick="chonCot(event, this)">Thêm dòng mới ở đây</td>
+                    <td onclick="chonCot(event, this)">Thêm dòng mới ở đây</td>
+                </tr>
+                <tr onclick="chonDong(this)">
+                    <td onclick="chonCot(event, this)">Dòng 1 cột 1</td>
+                    <td onclick="chonCot(event, this)">Dòng 1 cột 2</td>
+                </tr>
+                <tr onclick="chonDong(this)">
+                    <td onclick="chonCot(event, this)">Dòng 2 cột 1</td>
+                    <td onclick="chonCot(event, this)">Dòng 2 cột 2</td>
+                </tr>
+                <tr onclick="chonDong(this)">
+                    <td onclick="chonCot(event, this)">Dòng 3 cột 1</td>
+                    <td onclick="chonCot(event, this)">Dòng 3 cột 2</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <button onclick="themDong()">Thêm vào</button>
+        <button onclick="xoaDong()">Xóa</button>
+        <button onclick="chiHienDong()">Chỉ hiện dòng</button>
+        <button onclick="chiHienCot()">Chỉ hiện cột</button>
+        <button onclick="moTrangMoi()">Mở một trang mới</button>
+        <script>
+            var dangAnDong = false;
+            var dangAnCot = false;
+            var cotDuocChon = -1;
+            function capNhatDongHo() {
+                var hienTai = new Date();
+                var gio = String(hienTai.getHours()).padStart(2, "0");
+                var phut = String(hienTai.getMinutes()).padStart(2, "0");
+                var giay = String(hienTai.getSeconds()).padStart(2, "0");
+                document.getElementById("dongHo").textContent =
+                    gio + ":" + phut + ":" + giay;
+            }
+            capNhatDongHo();
+            setInterval(capNhatDongHo, 1000);
+            function chuotTrai() {
+                alert("Chuột trái");
+            }
+            function chuotPhai(event) {
+                event.preventDefault();
+                alert("Chuột phải");
+            }
+            function chonDong(dong) {
+                if (dangAnDong || dangAnCot) return;
+                if (dong.style.backgroundColor === "red") {
+                    dong.style.backgroundColor = "white";
+                } else {
+                    dong.style.backgroundColor = "red";
+                }
+            }
+            function chonCot(event, o) {
+                event.stopPropagation();
+                if (dangAnDong || dangAnCot) return;
+                var dong = o.parentNode;
+                if (dong.style.backgroundColor === "red") {
+                    dong.style.backgroundColor = "white";
+                } else {
+                    dong.style.backgroundColor = "red";
+                }
+                cotDuocChon = o.cellIndex;
+            }
+            function themDong() {
+                var bang = document.getElementById("bang");
+                var tbody = bang.tBodies[0];
+                var dong = tbody.insertRow();
+                var o1 = dong.insertCell(0);
+                var o2 = dong.insertCell(1);
+                o1.textContent = "Thêm dòng mới ở đây";
+                o2.textContent = "Thêm dòng mới ở đây";
+                dong.onclick = function () {
+                    chonDong(this);
+                };
+                o1.onclick = function (event) {
+                    chonCot(event, this);
+                };
+                o2.onclick = function (event) {
+                    chonCot(event, this);
+                };
+            }
+            function xoaDong() {
+                var tbody = document.getElementById("bang").tBodies[0];
+                for (var i = tbody.rows.length - 1; i >= 0; i--) {
+                    if (tbody.rows[i].style.backgroundColor === "red") {
+                        tbody.deleteRow(i);
+                    }
+                }
+            }
+            function chiHienDong() {
+                var cacDong = document.querySelectorAll("#bang tbody tr");
+                if (dangAnDong) {
+                    for (var i = 0; i < cacDong.length; i++) {
+                        cacDong[i].style.display = "";
+                    }
+                    dangAnDong = false;
+                    return;
+                }
+                var coDongChon = false;
+                for (var i = 0; i < cacDong.length; i++) {
+                    if (cacDong[i].style.backgroundColor === "red") {
+                        coDongChon = true;
+                        break;
+                    }
+                }
+                if (!coDongChon) {
+                    alert("Vui lòng chọn một dòng trước!");
+                    return;
+                }
+                for (var i = 0; i < cacDong.length; i++) {
+                    if (cacDong[i].style.backgroundColor !== "red") {
+                        cacDong[i].style.display = "none";
+                    }
+                }
+                dangAnDong = true;
+            }
+            function chiHienCot() {
+                var bang = document.getElementById("bang");
+                var cacDong = bang.rows;
+                if (dangAnCot) {
+                    for (var i = 0; i < cacDong.length; i++) {
+                        for (var j = 0; j < cacDong[i].cells.length; j++) {
+                            cacDong[i].cells[j].style.display = "";
+                        }
+                    }
+                    dangAnCot = false;
+                    return;
+                }
+                if (cotDuocChon === -1) {
+                    alert("Vui lòng nhấn vào một ô trong cột muốn hiển thị!");
+                    return;
+                }
+                for (var i = 0; i < cacDong.length; i++) {
+                    for (var j = 0; j < cacDong[i].cells.length; j++) {
+                        if (j !== cotDuocChon) {
+                            cacDong[i].cells[j].style.display = "none";
+                        }
+                    }
+                }
+                dangAnCot = true;
+            }
+            function moTrangMoi() {
+                window.open("https://tranduythanh.com", "_blank");
+            }
+        </script>
+    </body>
+</html>
