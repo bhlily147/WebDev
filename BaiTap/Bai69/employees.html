@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Employees</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
+    </head>
+    <body>
+        <h1>Employees</h1>
+        <label for="cbtitle">Chọn Title:</label>
+        <select id="cbtitle">
+            <option value="">Chọn Title</option>
+        </select>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã Employee</th>
+                    <th>Tên Employee</th>
+                    <th>Phone Employee</th>
+                </tr>
+            </thead>
+            <tbody id="tbEmployees"></tbody>
+        </table>
+        <script src="main.js"></script>
+        <script>
+            load_employees("employees.xml", "tbEmployees")
+        </script>
+    </body>
+</html>
