@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>Bài 75</title>
+        <link rel="stylesheet" href="main.css" type="text/css">
+    </head>
+    <body>
+        <table class="info">
+            <tr>
+                <td>Nhập Mã:</td>
+                <td><input id="ma" type="text"></td>
+            </tr>
+            <tr>
+                <td>Nhập Tên:</td>
+                <td><input id="ten" type="text"></td></tr>
+            <tr>
+                <td>Mã và Tên:</td>
+                <td id="chiTiet"></td></tr>
+            <tr>
+                <td colspan="2">Danh sách Sách đang mượn:</td></tr>
+        </table>
+        <div class="book-panel">
+            <table id="bangSach">
+                <thead>
+                    <tr>
+                        <th>Mã Sách</th>
+                        <th>Tên Sách</th>
+                        <th>Số Trang</th></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <script src="main.js"></script>
+        <script>
+            load_books("data.json", "bangSach");
+        </script>
+    </body>
+</html>

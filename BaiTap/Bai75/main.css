@@ -1,0 +1,44 @@
+table {
+    border-collapse: collapse;
+}
+td, th {
+    border: 1px solid black;
+    padding: 5px;
+}
+.info {
+    width: 300px;
+    margin: 0 auto;
+    background: white;
+}
+.info tr:nth-child(odd) td {
+    background: #eee;
+}
+.info tr:nth-child(even) td {
+    background: white;
+}
+input {
+    background: white;
+    border: 1px solid black;
+}
+.book-panel {
+    width: 300px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 5px;
+    border: 1px solid black;
+    border-top: 0;
+    background: #eee;
+}
+#bangSach {
+    width: 100%;
+    background: white;
+}
+#bangSach th {
+    background: #eee;
+}
+#bangSach tbody tr:nth-child(odd) {
+    background: white;
+}
+#bangSach tbody tr:nth-child(even) {
+    background: #eee;
+}
